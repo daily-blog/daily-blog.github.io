@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134' +'228'+ '602-31"><\/script>')</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134' + '228' + '602-31');
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>🌙 👼🏽 👩🏾‍🔬 Want to integrate Telegram into Redmine? There is a solution 👨‍👩‍👧 👩🏽‍🎓 👦🏿</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="description" content="Some time ago I told the volume “ How to store a complex hierarchy of settings in Redmine projects ”. This story was based on the experience of develo...">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header class="a">
+    <a class="p-hd-logo-ct" href="https://daily-blog.github.io/index.html"></a>
+    <div class="b">Your info daily</div>
+  </header>
+  <section class="c">
+<h1>Want to integrate Telegram into Redmine? There is a solution</h1><div class="post__text post__text-html js-mediator-article">  <i>Some time ago I told the volume “ <a href="http://habrahabr.ru/company/centosadmin/blog/270615/">How to store a complex hierarchy of settings in Redmine projects</a> ”.</i>  <i>This story was based on the experience of developing the <a href="https://github.com/centosadmin/redmine_intouch">redmine_intouch</a> plugin.</i>  <i>In this publication I will tell about the plugin itself and how it can be useful for you.</i> <br><br>  <a href="http://centos-admin.ru/">Our company is</a> growing, it is becoming more and more difficult to rely on the human factor, and numerous customers expect an immediate response to their requests. <br><br>  In this regard, we try to automate all possible processes as much as possible, remind administrators of the need to write the status of open tasks to customers on time ... <br><br>  So the idea was to create a plugin that will send notifications to a wide range of people - the performer, the author, the observers of the task, as well as in specialized group chats. <br><br><div style="text-align:center;"><img src="https://habrastorage.org/getpro/habr/post_images/491/781/546/491781546f8cce214d43beed0a9fbc5a.png" alt="image"></div><br><a name="habracut"></a><br>  It was also important to set up periodic reminders for tasks that have not been commented on for a long time and status updates, or have not appointed an artist. <br><br><div style="text-align:center;"><img src="https://habrastorage.org/getpro/habr/post_images/6ae/ec5/531/6aeec5531fe0990b969a9d50dd37d317.png" alt="image"></div><br><br>  And then someone will kick Ivan Tsarevich, he will jump on his horse and go to look for the village.  And his friends, who are watching the task, will see the following message: <br><br><div style="text-align:center;"><img src="https://habrastorage.org/getpro/habr/post_images/360/3d8/a4c/3603d8a4c7149d418f5f80ec290edb8d.png" alt="image"></div><br><h4>  General settings </h4><br>  In the general settings of the plugin, you can specify which days to consider working and what time.  In accordance with these settings, notifications about not urgent tasks are sent. <br><br>  Priorities for urgent tasks are specified additionally.  Notifications of these tasks will be sent around the clock and seven days a week. <br><br>  Currently, the plugin sends a notification via mail and <a href="https://telegram.org/">Telegram</a> .  But if you want to use only one of these protocols, you can disable the unnecessary in the plugin settings. <br><br><h4>  Instant Notifications </h4><br>  It is often necessary that notifications arrive immediately after updating the status or priority of a task, as well as any other fields.  In the instant notification section you can configure which messages will be received: <br><ul><li>  task author </li><li>  executor </li><li>  observers </li><li>  Telegram group chats </li></ul><br><h4>  Performer groups </h4><br>  Often there is a situation when the client forgot to switch the task to the administrator, but wrote the desired comment. <br><br>  In order for administrators to receive notifications of such changes in a timely manner, the functionality of artist groups has been added to the plugin. <br><br>  Only members of selected groups are considered performers and receive notifications.  If several performers participate in the task, the executor is considered to be the one who last left a comment or made some changes to the task. <br><br><h4>  Periodic notifications </h4><br>  It also happens that the performer is so carried away with the execution of the task that he forgot to update her status in time and write the necessary comment. <br><br>  To correct such a situation, the functionality of periodic notifications serves. <img src="https://habrastorage.org/getpro/habr/post_images/283/a01/29e/283a0129ecb6a7588951ef5b59f449d9.png" alt="image" align="right"><br><br>  Separately, you can configure notifications for tasks: <br><ul><li>  with the status "In Work" or "Feedback" </li><li>  not assigned or assigned to groups </li><li>  expired or without a specified completion date </li></ul><br>  Since the priority of tasks is different, then the frequency of notifications can be configured for each priority individually. <br><br>  For example, <b>Avariya</b> should be updated at least once per hour, the task with the <b>High</b> priority - once at 4 o'clock, and the <b>low</b> priority one can not be commented at all. <br><br><h4>  Install and configure the plugin </h4><br>  In this publication I will not talk about the subtleties of setting up the plugin, because  did it in some detail in the <a href="">readme file</a> . <br><br>  If you have any questions, I will be happy to answer them in the comments. <br><br>  PS: The company <a href="http://centos-admin.ru/">Centos-admin.ru</a> does not participate in fairy-tale adventures.  The task of Ivan Tsarevich was used as an illustration and has nothing to do with the company's activities.  <a href="http://centos-admin.ru/">The company</a> also provides the following services: <br><ul><li>  software update </li><li>  24x7 resource availability monitoring </li><li>  optimization of settings for loaded projects </li><li>  hardware monitoring </li><li>  help in repelling DDoS attacks </li><li>  collection of server load statistics </li><li>  remote backup </li><li>  support for loaded projects </li></ul><br>  PPS: Oh yes.  I almost forgot.  <a href="https://github.com/centosadmin/redmine_intouch">Here is the link</a> to the <b>redmine_intouch</b> plugin, it is completely free.  We will be glad if it is useful to you. <br><br>  <b>UPD 12/03/2015:</b> Plugin works with Redmine version <b>3.1.2</b> or higher. </div>
+<section class="more-ats-n-panel">
+<h4>More posts:</h4>
+<nav class="list-of-ats-container"><ul class="ls-of-p">
+<li><a href="../185172/index.html">Windows on RAM disk</a></li>
+<li><a href="../189874/index.html">Creating a simple bot for WoW, programming routes (continued)</a></li>
+<li><a href="../21882780073558705/index.html">The discharge smells like onions: causes, diagnosis, treatment</a></li>
+<li><a href="../27138943540936156/index.html">What fruits can I eat with a stomach ulcer: a list of allowed, a positive effect on the work of the stomach and an approximate menu for an ulcer</a></li>
+<li><a href="../327152/index.html">Mikrotik L2TP / IPSec for NAT: ipsec, error failed to pre-process ph2 packet</a></li>
+<li><a href="../331498/index.html">Fighting spam on hosting. Setup EFA Project Free Spam / antivirus filter</a></li>
+<li><a href="../342434/index.html">Levenshtein distance in MySQL and fuzzy search algorithms using PHP</a></li>
+<li><a href="../37951632811657987/index.html">Can I drink milk with gastritis?</a></li>
+<li><a href="../434816/index.html">Detox and Appium: an automated interface test in React Native</a></li>
+</ul></nav>
+</section><br />
+<a href="../../index.html"><strong>All Posts</strong></a><script src="../../script.js"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(67150471, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/67150471" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google Analytics -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-134'+ '228'+ '602-31', 'auto'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+</section>
+
+<footer class="p-ft">
+  <div class="p-ft-li-ct p-ft-el">
+    <p>
+      Daily Blog | <span class="p-ft-li-year">2020</span>
+    </p>
+  </div>
+  <div class="p-ft-counters-ct p-ft-el">
+    <div class="company-info" itemscope="" itemtype="http://schema.org/Organization">
+      <span itemprop="name">Daily Blog Media (DBM)</span>
+      <div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">3743 Bryan Avenue</span>
+        <br>
+        <span itemprop="postalCode">MN 55415</span>
+        <span itemprop="addressLocality">Minneapolis, USA</span>
+      </div>
+      <span itemprop="telephone">651-276-2467</span>
+    </div>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Minneapolis, USA",
+          "postalCode": "MN 55415",
+          "streetAddress": "3743 Bryan Avenue"
+        },
+        "name": "Daily Blog Media (DBM)",
+        "telephone": "651-276-2467"
+      }
+    </script>
+  </div>
+</footer>
+  
+</body>
+
+</html>

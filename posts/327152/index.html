@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134' +'228'+ '602-31"><\/script>')</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134' + '228' + '602-31');
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>👩🏼‍🔧 👸🏼 🏧 Mikrotik L2TP / IPSec for NAT: ipsec, error failed to pre-process ph2 packet 🤫 ℹ️ 🐡</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="description" content="When using Mikrotik for NAT (in particular, for all sorts of USB GSM modems) in L2TP / IPSec client mode, for some operators in certain modes, I got a...">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header class="a">
+    <a class="p-hd-logo-ct" href="https://daily-blog.github.io/index.html"></a>
+    <div class="b">Your info daily</div>
+  </header>
+  <section class="c">
+<h1>Mikrotik L2TP / IPSec for NAT: ipsec, error failed to pre-process ph2 packet</h1><div class="post__text post__text-html js-mediator-article">  When using Mikrotik for NAT (in particular, for all sorts of USB GSM modems) in L2TP / IPSec client mode, for some operators in certain modes, I got a problem with the ipsec error, error failed to pre-process ph2 packet. <br>  But with the advent of RoS 6.38, it became possible to cope with an error. <br><a name="habracut"></a><br>  So, the error appears in the usual L2TP client configuration as in the picture: <br><img src="https://habrastorage.org/files/646/d62/302/646d62302b354bb7a5c8ab64ad885cc6.PNG"><br><br>  The main problem is that the IPSec policy used in this configuration is nailed and uses ike1.  Ike1, in turn, in the implementation of RoS, has a problem when passing NAT without port forwarding, and as an aggravating circumstance: multiple tunnels with l2tp also do not work out of a single NAT (and the number of clients on the modem is huge). <br>  You can solve the problem when using IKE2 (and for a heap of clients with one NAT, you need to abandon PSK authorization in favor of RSA Signature), which cannot be configured from the menu above, but you can do the trick: go to IP -&gt; IPSec <br><img src="https://habrastorage.org/files/c4f/0d7/ddf/c4f0d7ddf55c485da7d127ab36f4ffe9.PNG"><br><br>  Copy the dynamically created peer, and change the settings in it as shown below: <br><img src="https://habrastorage.org/files/f13/dff/4a0/f13dff4a024f4fe38758e440f6b49a0c.PNG"><br><br>  Namely, we change Exchange Mode to IKE2, in the Encryption tab, configure the necessary encryption settings. <br><br>  It remains to disable the use of IPSec in the L2TP / IPSec settings. <br><br>  That's all, the connection rises, encryption works. </div>
+<section class="more-ats-n-panel">
+<h4>More posts:</h4>
+<nav class="list-of-ats-container"><ul class="ls-of-p">
+<li><a href="../185172/index.html">Windows on RAM disk</a></li>
+<li><a href="../189874/index.html">Creating a simple bot for WoW, programming routes (continued)</a></li>
+<li><a href="../21882780073558705/index.html">The discharge smells like onions: causes, diagnosis, treatment</a></li>
+<li><a href="../27138943540936156/index.html">What fruits can I eat with a stomach ulcer: a list of allowed, a positive effect on the work of the stomach and an approximate menu for an ulcer</a></li>
+<li><a href="../272051/index.html">Want to integrate Telegram into Redmine? There is a solution</a></li>
+<li><a href="../331498/index.html">Fighting spam on hosting. Setup EFA Project Free Spam / antivirus filter</a></li>
+<li><a href="../342434/index.html">Levenshtein distance in MySQL and fuzzy search algorithms using PHP</a></li>
+<li><a href="../37951632811657987/index.html">Can I drink milk with gastritis?</a></li>
+<li><a href="../434816/index.html">Detox and Appium: an automated interface test in React Native</a></li>
+<li><a href="../435882/index.html">Review of Xiaomi Mi Box S and a small comparison with Mi Box 3</a></li>
+</ul></nav>
+</section><br />
+<a href="../../index.html"><strong>All Posts</strong></a><script src="../../script.js"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(67150471, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/67150471" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google Analytics -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-134'+ '228'+ '602-31', 'auto'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+</section>
+
+<footer class="p-ft">
+  <div class="p-ft-li-ct p-ft-el">
+    <p>
+      Daily Blog | <span class="p-ft-li-year">2020</span>
+    </p>
+  </div>
+  <div class="p-ft-counters-ct p-ft-el">
+    <div class="company-info" itemscope="" itemtype="http://schema.org/Organization">
+      <span itemprop="name">Daily Blog Media (DBM)</span>
+      <div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">3743 Bryan Avenue</span>
+        <br>
+        <span itemprop="postalCode">MN 55415</span>
+        <span itemprop="addressLocality">Minneapolis, USA</span>
+      </div>
+      <span itemprop="telephone">651-276-2467</span>
+    </div>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Minneapolis, USA",
+          "postalCode": "MN 55415",
+          "streetAddress": "3743 Bryan Avenue"
+        },
+        "name": "Daily Blog Media (DBM)",
+        "telephone": "651-276-2467"
+      }
+    </script>
+  </div>
+</footer>
+  
+</body>
+
+</html>

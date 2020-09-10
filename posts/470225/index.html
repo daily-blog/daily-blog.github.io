@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134' +'228'+ '602-31"><\/script>')</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134' + '228' + '602-31');
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>💇🏾 👀 😷 Why self-destructing photos / videos on Telegram are not safe 👩🏾‍🤝‍👨🏿 🥅 ㊗️</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="description" content="Most recently, I saw an article that talked about the introduction of self-destructing messages in the WhatsApp messenger. It will have similar functi...">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header class="a">
+    <a class="p-hd-logo-ct" href="https://daily-blog.github.io/index.html"></a>
+    <div class="b">Your info daily</div>
+  </header>
+  <section class="c">
+<h1>Why self-destructing photos / videos on Telegram are not safe</h1><div class="post__text post__text-html js-mediator-article"><img src="https://habrastorage.org/webt/pb/vz/ur/pbvzuriwtjebtwfbawzykgzjnek.png" alt="image"><br><br>  Most recently, I saw <a href="https://vc.ru/services/86139-whatsapp-nachal-testirovat-funkciyu-samounichtozheniya-soobshcheniy">an article</a> that talked about the introduction of <b>self-destructing messages</b> in the <b>WhatsApp</b> messenger.  It will have similar functionality to Telegram, but if in Durov’s messenger the deletion applies to ordinary messages (secret chats), they can also be used on photos in ordinary chats.  That is, after sending, suppose the photo, the interlocutor will be able to view it for a limited amount of time, and after, in theory, it will be deleted from both interlocutors (preferably from the server too), then WhatsApp plans to introduce the deletion of regular messages (and so far it has been done) . <br><br>  But today we’re not talking about WhatsApp (because I don’t use it at all), but about Telegram.  The very idea of ​​self-destructing messages is hardly in great demand, but there are those users who use them, for example, when sending documents or photos that can only be seen once (ahem). <br><br>  For those who are too lazy to read, <b>self-destructing messages on Telegram are neither safe</b> nor confidential.  Do not think that if you send an important document to someone you talk to in this way, he will not be able to save it (and I'm not talking about a quick screenshot or photographs of phone screens, God forbid) - use secret chats for this.  And for those who are interested in the very implementation of these messages, you can continue reading. <a name="habracut"></a><br><br>  I also used them, though not often and rather they were just “entertainment” and I didn’t especially watch them.  In the month of June this year, while researching the <b>UserAPI Telegram</b> , I tested sending photos and receiving them.  Had fun, no more.  And interest appeared in viewing the “view” of sending messages, and how they are generally displayed in the response.  I was wondering how this function is implemented “from the inside”, whether files are deleted from the Telegram server or can they be encrypted somehow. <br><br>  And to my surprise, these messages are practically no different from the usual ones.  Straight at all.  They have the same <b>file_id</b> as ordinary photos, with which you can get the file itself.  And even if you viewed the message and it disappeared in the chat, <b>you can safely save / send / forward it</b> and do the same thing that you could do with ordinary photos / videos.  That is, it is not deleted from the Telegram server itself. <br><br>  I repeat, such messages do not apply to secret chats, where the correspondence is on two devices, and from another client I can’t access them.  This feature is designed for regular chats and seems to be considered "safe."  But here it’s interesting, I haven’t found a detailed description of these self-destructing messages anywhere.  That is, Telegram does not seem to tell us that these messages are so safe in terms of access (if you have access to the account itself) like for example the same secret chats.  The only thing I saw was that Telegram itself said that no messages, even secret chats, have 100 percent security and that everyone is responsible for the messages that he sends, but ... <br>  I admit, it would be implemented in some WhatsApp / Viber / VK, I would not even pay attention to it, but Telegram is a very convenient messenger, which I love very much, but what I hate is its support filled with volunteers. <br><br>  In the same month of June, I wrote to support@telegram.org, where I wrote a whole letter in two languages.  It said not only about self-destructing messages, but also about ordinary ones and that Telegram does not set any limits on forwarding, but more on that later. <br><br>  Two months later, they did not answer me, so I had to write to that very “support” Telegram about explaining what to do and where to write when finding this kind of “Vulnerability”. <br><br>  There, they surprisingly answered me three hours later, where they told me that it was necessary to write about serious vulnerabilities in the protocol at security@telegram.org or to share the details here.  I enclose the original response text from the support: <br><br><div class="spoiler">  <b class="spoiler_title">July 5, support response</b> <div class="spoiler_text">  <i>Hey.</i>  <i>You can share the details here or write to security@telegram.org if we are really talking about some kind of vulnerability in our applications or protocol.</i> <br></div></div><br>  I decided to write to the support itself about the "details" of vulnerabilities, applying the video, the script itself and solutions to the problem (below is my message), but until now I have not been answered, either by mail or in the support itself.  Apparently so far, this does not bother them.  <s>Better let's make an animation of single emojis.</s> <br><br>  In addition to the option with self-destructing messages, I also noticed that any message that was deleted, for example, in a private chat, group, channel, is also easy to intercept.  This is done using the <b>usual forward of all messages</b> , for example, in a separate group, and after getting them <b>using the ID of the deleted message</b> (now the libraries have handlers on them). <br><br>  I also described the whole process in my letter (although in fact it is simple), with a solution to the problem in the form of limiting the forwards of the messages themselves.  And if you do not completely limit, then prohibit the constant forward of all messages.  I think the development team will be able to make some anti-flood from the forwards. <br><br>  And with self-destructing ones, just delete them from the server.  This will not solve the problem, messages can still be intercepted exactly at the time they are received.  For complete elimination, the entire algorithm for reading them should be reworked.  For example, to make an access key to each message and when using this key, the image / video will be available only for a certain time.  It’s hard for me to come up with the whole algorithm for the development team, I admit, I myself am not able to think through all the aspects and in any case, there is a way to intercept them.  But at the moment, they are implemented just awfully, the developer (s) who were engaged in this function should be more responsible for the development of this kind of function.  Well, or in extreme cases, just write, in red, bold letters, that self-destructing messages are easy to intercept and this is nothing more than a toy. <br><br>  I’ll tell you about myself, a 15-year-old student, recently fond of developing in Python, dabbled in the User API and found this kind of "flaw / vulnerability."  The more that infuriated and forced me to write all this here - a terrible implementation of Telegram support, which simply ignored me three times in 4 months. <br><br>  For some, this function will not be useful, it will not find anything bad in the poor implementation of such messages, but I think that since Telegram itself is not interested in improving the current functions, it will be useful for others to just take this into account. <br><br>  I’m writing articles for the first time, I could leave mistakes somewhere, but I hope that they will correct me in the comments, indicating.  Or, in general, they will tell me that everything is wrong and ignoring support was a good solution and I will finally calm down.  I also attach my message: <br><br><div class="spoiler">  <b class="spoiler_title">Support message for which no reply was received</b> <div class="spoiler_text">  <i>Hello, my name is Khamidov Amal.</i> <i><br><br></i>  <i>Recently, I wrote a user experience for my project.</i>  <i>At some point, I noticed how my friend sent me a self-removing photo.</i>  <i>I looked at it on my Android client and it was removed as it should be after 10 seconds.</i> <i><br><br></i>  <i>But I wondered how such messages are encrypted and how they are stored on the go.</i>  <i>After all, it turns out that the telegram client first uploads the photo to the phone, and after reading it must remove it.</i> <i><br><br></i>  <i>I wrote a small python script using the Pyrogram library and wanted to see how they came to the client.</i> <i><br><br></i>  <i>I was surprised when I saw that these "self-deleting photos" look just like regular ones (what?).</i> <i><br></i>  <i>That is, if I sent a regular photo, it was no different from the “self-deprecating".</i> <i><br></i>  <i>After that, I wrote a script that sends this photo on the file, and at that moment, the photo went to my test channel like a normal photo.</i>  <i>And on the phone from which I sent this most "self-extracting" photo, it was not even read.</i> <i><br><br></i>  <i>It also allowed me to view the photo on my desktop client.</i>  <i>That is, this script bypasses the most important essence of the "Self-extracting" photo.</i> <i><br><br></i>  <i>I consider it a vulnerability, and I consider it a solution to reconsider the method of sending "self-deleting" messages and process them on the server and not on the device.</i> <i><br><br></i>  <i>Also, I found the second one (almost a vulnerability), which was created using the API's telegram itself and is not prohibited at all.</i> <i><br><br></i>  <i>So, we are talking about ordinary messages.</i> <i><br><br></i>  <i>I also wrote a regular script that sends (forward) all messages from the chat to my group and marks them by their ID.</i> <i><br><br></i>  <i>I added a handler to this script that responds to all deleted messages and gives the ID of these deleted messages (hello pyrogram).</i> <i><br><br></i>  <i>After that, I added a script and now, when the handler responds to all deleted messages, it checks them with the messages from the group (which contains all the messages) and looks for this message by ID.</i> <i><br><br></i>  <i>On the one hand, this does not violate anything, because telegrams have an open code, everyone can write their userbots.</i>  <i>but on the other hand (russian is good), in the last update you added the function of deleting your own and others' messages for the sake of security, but such simple scripts written by a 15-year-old schoolboy seem to bypass this very security.</i> <i><br><br></i>  <i>I understand that everyone responds in response that he sends, but a person can send important files to an unnecessary person by mistake and at this moment he will delete the message (While the interlocutor has not read) without knowing that all these messages can be compromised and most importantly, that messages are not marked read.</i> <i><br><br></i>  <i>The decision, I think, is to add limits on forward messages and review the way of “reading” messages.</i> <i><br><br></i>  <i>In the second video I attached how can I save all deleted messages without reading them.</i> <i><br></i>  <i>I attach the video and script that I wrote to clearly show how it works.</i> <br></div></div><br><br>  And how it looks in the code (used the Telethon library, on Pyrogram it's almost the same): <br><br><div class="spoiler">  <b class="spoiler_title">The most important part of the code.</b>  <b class="spoiler_title">The rest is just an indication of the account, phone number, etc.</b> <div class="spoiler_text"><pre><code class="python hljs"><span class="hljs-meta"><span class="hljs-meta">@client.on(events.NewMessage(func=lambda e: e.is_private and getattr(e, 'photo'))) async def handler(event: message.Message): # event.input_chat may be None, use event.get_input_chat() chat: InputPeerUser = await event.get_input_chat() sender: User = await event.get_sender() photo: Photo = event.photo await client.send_message(img_channel, file=MessageMediaPhoto(photo), message=f'&lt;code&gt;{chat.user_id}&lt;/code&gt;\n' f'&lt;code&gt;{sender.first_name}&lt;/code&gt;\n', parse_mode='HTML')</span></span></code> </pre> <br></div></div></div>
+<section class="more-ats-n-panel">
+<h4>More posts:</h4>
+<nav class="list-of-ats-container"><ul class="ls-of-p">
+<li><a href="../37951632811657987/index.html">Can I drink milk with gastritis?</a></li>
+<li><a href="../434816/index.html">Detox and Appium: an automated interface test in React Native</a></li>
+<li><a href="../435882/index.html">Review of Xiaomi Mi Box S and a small comparison with Mi Box 3</a></li>
+<li><a href="../461101/index.html">Android Jetpack Compose First Impression</a></li>
+<li><a href="../463157/index.html">ESP32-CAM Video Streaming Server Connecting I2C and SPI Displays</a></li>
+<li><a href="../471630/index.html">Forbidden pleasure: in which countries is PornHub blocked and why</a></li>
+<li><a href="../7229007809150425/index.html">Can I eat watermelons while breastfeeding or not?</a></li>
+<li><a href="../7999219654442455/index.html">Pork skin: benefits and harms, effects on the body</a></li>
+<li><a href="../9417502872369454/index.html">After Postinor, menstruation delay: the main reasons and recommendations of doctors</a></li>
+<li><a href="../ar-1055890/index.html">الطاقة المستدامة - ويكيبيديا</a></li>
+</ul></nav>
+</section><br />
+<a href="../../index.html"><strong>All Posts</strong></a><script src="../../script.js"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(67150471, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/67150471" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google Analytics -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-134'+ '228'+ '602-31', 'auto'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+</section>
+
+<footer class="p-ft">
+  <div class="p-ft-li-ct p-ft-el">
+    <p>
+      Daily Blog | <span class="p-ft-li-year">2020</span>
+    </p>
+  </div>
+  <div class="p-ft-counters-ct p-ft-el">
+    <div class="company-info" itemscope="" itemtype="http://schema.org/Organization">
+      <span itemprop="name">Daily Blog Media (DBM)</span>
+      <div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">3743 Bryan Avenue</span>
+        <br>
+        <span itemprop="postalCode">MN 55415</span>
+        <span itemprop="addressLocality">Minneapolis, USA</span>
+      </div>
+      <span itemprop="telephone">651-276-2467</span>
+    </div>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Minneapolis, USA",
+          "postalCode": "MN 55415",
+          "streetAddress": "3743 Bryan Avenue"
+        },
+        "name": "Daily Blog Media (DBM)",
+        "telephone": "651-276-2467"
+      }
+    </script>
+  </div>
+</footer>
+  
+</body>
+
+</html>
